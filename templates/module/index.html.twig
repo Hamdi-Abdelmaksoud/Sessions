@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}liste des modules{% endblock %}
+{% block title %}liste des modules
+{% endblock %}
 
 {% block body %}
-{% if modules %}
-    
- {% for module in modules %}
-{{ module}}<br>
-    
- {% endfor %}
- {% else %}
- <p>Pas de modules à l'instant</p>
-{% endif %}
+	{% if modules %}
+
+		{% for module in modules %}
+			{{ module}}<br>
+
+		{% endfor %}
+	{% else %}
+		<p>Pas de modules à l'instant</p>
+	{% endif %}
 {% endblock %}

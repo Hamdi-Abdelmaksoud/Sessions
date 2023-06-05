@@ -1,14 +1,15 @@
- {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}ajouter des modules{% endblock %}
+{% block title %}ajouter des modules
+{% endblock %}
 
 {% block body %}
-{% if app.user %}
-    
- <h1>ajouter une Module</h1>
- {{form(formAddModules)}}
-{% else %}
-<p>Contenu reservé aux admins</p>
+	{% if app.user %}
 
-{% endif %}
-{% endblock %}
+		<h1>ajouter une Module</h1>
+		{{form(formAddModules)}}
+			{% else %}
+				<p>Contenu reservé aux admins</p>
+
+		{% endif %}
+	{% endblock %}

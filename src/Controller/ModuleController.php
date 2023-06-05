@@ -22,25 +22,23 @@ class ModuleController extends AbstractController
         ]);
     }
     #[Route('/module/add', name: 'add_module')]
-    public function add(EntityManagerInterface $entityManager,Module $module=null,Request $request): Response
+    public function add(EntityManagerInterface $entityManager, Module $module = null, Request $request): Response
     {
-        if(!$module)
-        {
-            $module=new Module();
+        if (!$module) {
+            $module = new Module();
         }
-        $form=$this->createForm(ModuleType::class, $module);//création du formulaire
-         $form->handleRequest($request);//Inspecte la requete
-         if ($form->isSubmitted() && $form->isValid()) 
-        {
-            $module=$form->getData();//On récupère leq données
-            $entityManager->persist($module);//prepare on pdo
-            $entityManager->flush();//excute
+        $form = $this->createForm(ModuleType::class, $module); //création du formulaire
+        $form->handleRequest($request); //Inspecte la requete
+        if ($form->isSubmitted() && $form->isValid()) {
+            $module = $form->getData(); //On récupère leq données
+            $entityManager->persist($module); //prepare on pdo
+            $entityManager->flush(); //excute
             return $this->redirectToRoute("app_module");
         }
 
         // Add a default response here if the form is not submitted or not valid
         return $this->render('module/add.html.twig', [
-           'formAddModules' => $form->createView(),
-       ]);
+            'formAddModules' => $form->createView(),
+        ]);
     }
 }

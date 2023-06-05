@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}liste des categories{% endblock %}
+{% block title %}liste des categories
+{% endblock %}
 
 {% block body %}
-<h1>Liste des categories</h1>
-{% if categories %}
-    
- {% for categorie in categories %}
-<h3>{{ categorie}}</h3><br>
-{% if categorie.modules %}
-{% for module in categorie.modules %}
-    
-<li>{{ module}}</li><br>
-{% endfor %}
-{% endif %}
- 
-    
- {% endfor %}
- {% else %}
- <p>Pas de categories à l'instant</p>
-{% endif %}
+	<h1>Liste des categories</h1>
+	{% if categories %}
+
+		{% for categorie in categories %}
+			<h3>{{ categorie}}</h3><br>
+			{% if categorie.modules %}
+				{% for module in categorie.modules %}
+
+					<li>{{ module}}</li><br>
+				{% endfor %}
+			{% endif %}
+
+
+		{% endfor %}
+	{% else %}
+		<p>Pas de categories à l'instant</p>
+	{% endif %}
 {% endblock %}
