@@ -21,6 +21,9 @@ class Formateur
     #[ORM\OneToMany(mappedBy: 'formateur', targetEntity: Session::class)]
     private Collection $sessions;
 
+    #[ORM\Column(length: 50)]
+    private ?string $prenom = null;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
@@ -39,10 +42,8 @@ class Formateur
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
-
     /**
      * @return Collection<int, Session>
      */
@@ -50,17 +51,14 @@ class Formateur
     {
         return $this->sessions;
     }
-
     public function addSession(Session $session): self
     {
         if (!$this->sessions->contains($session)) {
             $this->sessions->add($session);
             $session->setFormateur($this);
         }
-
         return $this;
     }
-
     public function removeSession(Session $session): self
     {
         if ($this->sessions->removeElement($session)) {
@@ -69,6 +67,17 @@ class Formateur
                 $session->setFormateur(null);
             }
         }
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }
