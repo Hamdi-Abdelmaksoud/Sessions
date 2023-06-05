@@ -4,6 +4,9 @@
 
 {% block body %}
 <h1>Hello {{app.user.email}}</h1>
+<a href="{{path('add_categorie')}}">ajouter catégorie</a>
+<a href="{{path('add_formation')}}">ajouter formation</a>
+<a href="{{path('add_module')}}">ajouter module</a>
 
  
 {% endblock %}

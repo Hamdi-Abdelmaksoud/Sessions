@@ -7,7 +7,14 @@
 {% if categories %}
     
  {% for categorie in categories %}
-{{ categorie}}<br>
+<h3>{{ categorie}}</h3><br>
+{% if categorie.modules %}
+{% for module in categorie.modules %}
+    
+<li>{{ module}}</li><br>
+{% endfor %}
+{% endif %}
+ 
     
  {% endfor %}
  {% else %}
