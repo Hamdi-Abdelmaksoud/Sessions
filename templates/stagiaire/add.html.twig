@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajouter des stagiares
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+
+		<h1>ajouter une Module</h1>
+		{{form(formAddStagiaire)}}
+			{% else %}
+				<p>Contenu reservé aux admins</p>
+
+		{% endif %}
+	{% endblock %}
