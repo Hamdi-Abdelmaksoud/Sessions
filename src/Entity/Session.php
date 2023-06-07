@@ -35,6 +35,9 @@ class Session
     #[ORM\JoinColumn(nullable: false)]
     private ?Formation $titre = null;
 
+    #[ORM\Column]
+    private ?int $nbrPlaces = null;
+
     public function __construct()
     {
         $this->stagiaires = new ArrayCollection();
@@ -96,6 +99,12 @@ class Session
 
         return $this;
     }
+    public function getNbrPlacesDisponibles(): int
+    {
+        $placesOccupees = count($this->stagiaires);
+        return $this->nbrPlaces - $placesOccupees;
+    }
+
 
     public function getFormateur(): ?Formateur
     {
@@ -147,6 +156,22 @@ class Session
     public function setTitre(?Formation $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->titre;
+    }
+
+    public function getNbrPlaces(): ?int
+    {
+        return $this->nbrPlaces;
+    }
+
+    public function setNbrPlaces(int $nbrPlaces): self
+    {
+        $this->nbrPlaces = $nbrPlaces;
 
         return $this;
     }

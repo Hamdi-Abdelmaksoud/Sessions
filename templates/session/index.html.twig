@@ -1,38 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SessionController!
+{% block title %}liste des sessions
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
+	{% if sessions %}
 
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅</h1>
+		{% for session in sessions %}
+			<p>
+				titre :
+				{{ session}}<br>
+				formateur : {{ session.formateur }}<br>
+					nbr : {{session.getNbrPlacesDisponibles()}}<br>{#autre méthode pour nombre de place dispo#}
+				nombre de place total :
+				{{ session.nbrPlaces}}<br>
+					{% set i = 0 %}
+				{% if session.stagiaires %}
+					<table>
+						<tr>
+							{% for stagiaire in session.stagiaires %}
+								{% set i = i + 1 %}
+								<td>{{stagiaire}}</td>
+							{% endfor %}
+						</tr>
+						<tr></tr>
+					</table>
+	{% endif %}
+					nombre de place disponible : {{ session.nbrPlaces -i }} <br>
 
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>
-					<a href="{{ 'C:/laragon/www/Sessions/src/Controller/SessionController.php'|file_link(0) }}">src/Controller/SessionController.php</a>
-				</code>
-			</li>
-			<li>Your template at
-				<code>
-					<a href="{{ 'C:/laragon/www/Sessions/templates/session/index.html.twig'|file_link(0) }}">templates/session/index.html.twig</a>
-				</code>
-			</li>
-		</ul>
-	</div>
+
+				date de début :
+				{{ session.dateDebut | date('d-m-y')}}
+				date de fin :
+				{{ session.dateFin | date('d-m-y')}}
+			</p>
+		{% endfor %}
+	{% else %}
+		<p>Pas de sessions à l'instant</p>
+	{% endif %}
 {% endblock %}
