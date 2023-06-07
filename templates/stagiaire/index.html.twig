@@ -12,7 +12,7 @@
 			{{ stagiaire}}<br>
 			{% if stagiaire.sessions%}
 				{% for session in stagiaire.sessions %}
-					les sessions :{{session}}
+					les sessions :<a href="{{path('show_session',{'id':session.id})}}">{{session}}</a>
 					formateur :{{session.formateur}}
 					date de début :{{ session.dateDebut | date('d-m-y')}}date de fin :{{ session.dateFin | date('d-m-y')}}
 					<br>
