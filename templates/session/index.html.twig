@@ -10,11 +10,14 @@
 			<p>
 				titre :
 				{{ session}}<br>
-				formateur : {{ session.formateur }}<br>
-					nbr : {{session.getNbrPlacesDisponibles()}}<br>{#autre méthode pour nombre de place dispo#}
+				formateur :
+				{{ session.formateur }}<br>
+				nbr :
+				{{session.getNbrPlacesDisponibles()}}<br>
+				{#autre méthode pour nombre de place dispo#}
 				nombre de place total :
 				{{ session.nbrPlaces}}<br>
-					{% set i = 0 %}
+				{% set i = 0 %}
 				{% if session.stagiaires %}
 					<table>
 						<tr>
@@ -25,8 +28,10 @@
 						</tr>
 						<tr></tr>
 					</table>
-	{% endif %}
-					nombre de place disponible : {{ session.nbrPlaces -i }} <br>
+				{% endif %}
+				nombre de place disponible :
+				{{ session.nbrPlaces -i }}
+				<br>
 
 
 				date de début :

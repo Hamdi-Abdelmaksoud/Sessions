@@ -1,28 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste de stagiaires
+{% block title %}liste des stagiaires
 {% endblock %}
+
 {% block body %}
-<h2>Liste des stagiaires</h2>
-{% if stagiaires %}
-	
-{% for stagiaire in stagiaires %}
-{{stagiaire}}<br>
-	
-{% endfor %}
-{% else %}
-<p>pas de stagiaire encore enregistré</p>
-{% endif %}
+	<h1>liste des stagiaires</h1>
+	{% if stagiaires %}
 
- 
-	 
+		{% for stagiaire in stagiaires %}
+			stagiaire :
+			{{ stagiaire}}<br>
+			{% if stagiaire.sessions%}
+				{% for session in stagiaire.sessions %}
+					les sessions :{{session}}
+					formateur :{{session.formateur}}
+					date de début :{{ session.dateDebut | date('d-m-y')}}date de fin :{{ session.dateFin | date('d-m-y')}}
+					<br>
+				{% endfor %}
+			{% else %}
+				<p>pas de session pour ce stagiaire</p><br>
+
+			{% endif %}
+
+		{% endfor %}
+	{% else %}
+		<p>Pas de stagiaire à l'instant</p>
+	{% endif %}
 {% endblock %}
- 
-
- 
-
- 
-
-	 
-
- 
