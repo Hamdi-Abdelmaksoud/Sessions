@@ -38,6 +38,7 @@ class StagiaireRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
 
 //    /**
 //     * @return Stagiaire[] Returns an array of Stagiaire objects
