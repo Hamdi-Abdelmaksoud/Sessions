@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SessionController extends AbstractController
+ class SessionController extends AbstractController
 {
     #[Route('/session', name: 'app_session')]
     public function index(SessionRepository $sessionRepository): Response

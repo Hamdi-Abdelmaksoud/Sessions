@@ -23,7 +23,7 @@
 						<tr>
 							{% for stagiaire in session.stagiaires %}
 								{% set i = i + 1 %}
-								<td>{{stagiaire}}</td>
+								<td><a href="{{path("show_stagiaire",{'id':stagiaire.id})}}">{{stagiaire}}</a></td>
 							{% endfor %}
 						</tr>
 						<tr></tr>
