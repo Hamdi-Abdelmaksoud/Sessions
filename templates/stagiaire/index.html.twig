@@ -10,9 +10,11 @@
 		{% for stagiaire in stagiaires %}
 			stagiaire :
 			{{ stagiaire}}<br>
+			 <a class="btn btn-danger" href="{{path('delete_stagiaire',{'id':stagiaire.id}) }}">delete</a> <br>
 			{% if stagiaire.sessions%}
 				{% for session in stagiaire.sessions %}
 					les sessions :<a href="{{path('show_session',{'id':session.id})}}">{{session}}</a>
+					
 					formateur :{{session.formateur}}
 					date de début :{{ session.dateDebut | date('d-m-y')}}date de fin :{{ session.dateFin | date('d-m-y')}}
 					<br>
@@ -26,4 +28,6 @@
 	{% else %}
 		<p>Pas de stagiaire à l'instant</p>
 	{% endif %}
+	
+  
 {% endblock %}
