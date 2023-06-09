@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType; // Ajout du type DateType
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Session;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class StagiaireType extends AbstractType
 {
@@ -24,6 +25,7 @@ class StagiaireType extends AbstractType
                 'choice_label' => 'titre',
                 'mapped' => false
             ])
+            ->add('submit', SubmitType::class)
         ;
     }
 
