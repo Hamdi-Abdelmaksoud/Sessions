@@ -32,6 +32,9 @@ public function add(EntityManagerInterface $entityManager, Stagiaire $stagiaire 
     if($form->isSubmitted() && $form->isValid()){
         $stagiaire = $form->getData(); // On récupère les données
         $entityManager->persist($stagiaire); // Équivalent du prepare
+        foreach ($stagiaire->getSessions() as $session) {
+            $entityManager->persist($session);
+        }
         $entityManager->flush(); // Équivalent du execute
 
         return $this->redirectToRoute("app_stagiaire");
