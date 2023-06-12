@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajouter des sessions
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+
+		<h1>ajouter une session</h1>
+		{{form(formAddSession)}}
+			{% else %}
+				<p>Contenu reservé aux admins</p>
+
+		{% endif %}
+	{% endblock %}
